@@ -1,0 +1,7 @@
+Research_Limitation
+The analysis uses a stated-choice dataset; hypothetical choices may differ from actual purchasing behaviour.
+The findings describe associations within the fitted model and should not automatically be interpreted as causal effects.
+The hydroponic estimate is uncertain because its 95% participant-bootstrap confidence interval includes an odds ratio of 1.
+The model assumes a linear effect of price on the log-odds scale.
+The results may not generalize beyond the consumers and choice scenarios represented in this dataset.
+The participant-level bootstrap used 200 successful replications; more replications could improve the stability of percentile confidence intervals.
