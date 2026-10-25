@@ -1,0 +1,5 @@
+Finding,Result,Interpretation
+Product vs. no purchase,OR = 3.405 (95% bootstrap CI: 2.458–4.961),Lettuce alternatives had higher relative selection odds than the no-purchase option.
+Organic labelling,OR = 2.373 (95% bootstrap CI: 1.974–2.780),Organic labelling was positively associated with relative selection odds.
+Hydroponic production,OR = 0.852 (95% bootstrap CI: 0.720–1.047),The confidence interval includes 1; the association was not statistically clear.
+Price,OR = 0.546 (95% bootstrap CI: 0.494–0.590),Higher prices were associated with lower relative selection odds.
