@@ -1,161 +1,182 @@
 # Consumer Choices for Hydroponic and Organic Lettuce: A Discrete-Choice Analysis
 
-**Research area:** Agricultural Economics · Consumer Behaviour · Food Systems · Applied Econometrics · Sustainable Agriculture
+![Research Focus](https://img.shields.io/badge/Research-Agricultural%20Economics-365f4b)
+![Methods](https://img.shields.io/badge/Methods-Discrete%20Choice%20Modelling-456c9b)
+![Tools](https://img.shields.io/badge/Tools-Python%20%7C%20pandas%20%7C%20SciPy-76568c)
+![Reproducibility](https://img.shields.io/badge/Workflow-Reproducible%20Research-287a65)
+
+**Research areas:** Agricultural Economics · Consumer Behaviour · Food Marketing · Sustainable Agriculture · Applied Econometrics
 
 **Project type:** Quantitative consumer-choice research
 
-**Primary methods:** Data preparation, exploratory data analysis, conditional logistic regression, odds-ratio interpretation, and statistical visualisation
+**Primary method:** Conditional logistic regression
 
-**Programming environment:** Python and Jupyter Notebook
+**Programming environment:** Python, Jupyter Notebook, and Google Colab
 
 ---
 
 ## 1. Project Overview
 
-This research project investigates how production method, organic status, and price are associated with consumer stated choices for lettuce. Using a discrete-choice dataset, the analysis examines the relative importance of product attributes when consumers select among lettuce alternatives or choose not to purchase.
+Consumer preferences play an important role in the marketing of agricultural products and the development of alternative food production systems. Understanding how consumers evaluate production methods, product attributes, and prices can help researchers investigate food purchasing decisions and the potential market positioning of differentiated agricultural products.
 
-The project sits at the intersection of agricultural economics, consumer behaviour, food marketing, and sustainable food production. Understanding how consumers respond to product attributes can help researchers investigate the market positioning of alternative production systems and the potential role of price and product differentiation in food choices.
+This project examines stated consumer choices for lettuce using a discrete-choice dataset containing information about hydroponic production, organic status, and price.
 
-The analysis focuses on three principal attributes:
+The analysis investigates how these attributes are associated with the relative likelihood that a lettuce alternative is selected within a choice set. It also considers the availability of a no-purchase option, allowing the analysis to distinguish product selection from the decision not to purchase.
 
-- **Hydroponic production:** whether the lettuce alternative is identified as hydroponically produced.
-- **Organic status:** whether the alternative carries the organic attribute.
-- **Price:** the stated price associated with each alternative.
+The cleaned analytical dataset contains 4,752 alternative-level observations from 198 participants and 1,584 choice sets. Each choice set contains three alternatives, with one recorded selection.
 
-The dataset includes a no-purchase alternative, allowing the analysis to examine product selection in relation to the option of not purchasing.
+Using Python, pandas, and conditional logistic regression, the project demonstrates a reproducible workflow for agricultural consumer research, including data preparation, exploratory analysis, statistical modelling, odds-ratio interpretation, visualization, and scientific communication.
 
-The project is organised to support transparent data handling, statistical modelling, interpretation of results, and reproducible research. Results are interpreted as evidence about stated preferences within the analysed dataset, not as direct measurements of actual purchasing behaviour.
+The emphasis is on understanding the evidence supported by the observed stated choices while accounting for statistical uncertainty and the limitations of the available data.
 
 ## 2. Research Motivation
 
-Agricultural producers and food-market stakeholders operate in an environment where production systems, sustainability attributes, certification, and prices may influence consumer perceptions and choices.
+Agricultural markets increasingly feature products differentiated by production method, certification, sustainability characteristics, and price.
 
-Hydroponic production can differ from conventional soil-based cultivation in its production methods and resource-management characteristics. Organic status represents a separate product attribute that may influence how consumers evaluate food. Price introduces an economic consideration that can affect the attractiveness of competing alternatives.
+Hydroponic production and organic status represent different product attributes that may influence how consumers evaluate lettuce. However, their market implications cannot be established simply by assuming that consumers prefer one production system over another.
 
-However, the presence of a product attribute does not automatically demonstrate that consumers value it positively. Its estimated association with choice must be evaluated empirically, alongside uncertainty and other attributes.
+Price is also an important consideration because consumers evaluate product characteristics alongside their financial cost.
 
-This project therefore uses a quantitative discrete-choice framework to examine how hydroponic production, organic status, and price relate to selection outcomes. The intention is to provide a transparent analytical workflow that can be reviewed, reproduced, and extended as the research develops.
+A discrete-choice framework provides a structured way to investigate these preferences by examining the attributes of alternatives selected within the same choice set.
 
-## 3. Research Aim
+This project applies that framework to explore three principal attributes:
 
-The main aim is to analyse the relationship between lettuce product attributes and consumer stated choices using discrete-choice modelling.
+- **Hydroponic production:** Whether the lettuce alternative is identified as hydroponically produced.
+- **Organic status:** Whether the alternative carries the organic attribute.
+- **Price:** The stated price associated with each alternative.
+
+The analysis contributes to agricultural economics by demonstrating how consumer stated-choice data can be prepared, modelled, interpreted, and communicated using quantitative methods.
+
+## 3. Research Aim and Objectives
+
+### Research aim
+
+To examine how hydroponic production, organic status, and price are associated with consumer stated choices for lettuce using conditional logistic regression.
 
 ### Specific objectives
 
-1. Prepare and document a structured dataset of consumer choice observations.
-2. Examine the distribution of participants, choice sets, alternatives, attributes, and observed selections.
-3. Estimate the associations between hydroponic production, organic status, price, and alternative selection.
-4. Compare product-selection outcomes with the availability of a no-purchase option.
-5. Translate model coefficients into interpretable odds ratios and uncertainty intervals.
-6. Communicate the findings through clear tables and figures.
-7. Document methodological assumptions, limitations, and requirements for reproducibility.
+1. Prepare and validate a structured consumer-choice dataset.
+2. Describe the distribution of participants, choice sets, alternatives, attributes, and observed selections.
+3. Estimate the associations between product attributes and alternative selection.
+4. Examine the relationship between price and the relative likelihood of selection.
+5. Interpret model coefficients using odds ratios and confidence intervals.
+6. Visualize the estimated relationships and their statistical uncertainty.
+7. Assess the limitations of the model and the generalizability of the findings.
+8. Document the analytical workflow to support reproducibility and independent review.
 
 ## 4. Research Questions
 
-The analysis is organised around the following questions:
+The analysis addresses the following questions:
 
-**RQ1.** How is hydroponic production associated with the probability of selecting a lettuce alternative, conditional on the other attributes included in the model?
+**RQ1.** How is hydroponic production associated with the relative likelihood of selecting a lettuce alternative?
 
 **RQ2.** How is organic status associated with consumer stated choice?
 
-**RQ3.** What is the relationship between price and the likelihood that an alternative is selected?
+**RQ3.** How is price associated with the relative likelihood that an alternative is selected?
 
-**RQ4.** How do product alternatives compare with the no-purchase alternative within the observed choice sets?
+**RQ4.** How does product selection relate to the availability of a no-purchase alternative?
 
-**RQ5.** How precisely can the estimated relationships be established, and what limitations affect their interpretation?
+**RQ5.** How precise are the estimated relationships, and what methodological limitations affect their interpretation?
 
-These questions concern statistical associations in the observed stated-choice data. They do not, by themselves, establish causal effects or predict actual market demand.
+These questions concern associations within the analysed stated-choice dataset. The results should not automatically be interpreted as causal effects or direct predictions of actual retail purchasing behaviour.
 
-## 5. Dataset Description
+## 5. Dataset and Study Design
+
+The project uses a lettuce consumer-choice dataset originally identified as `AE_hydro_org.csv`.
 
 The cleaned analytical dataset is named `lettuce_consumer_choice_clean.csv`.
 
-The recorded dataset dimensions are:
+### Dataset summary
 
-| Dataset characteristic | Recorded value |
+| Characteristic | Value |
 |---|---:|
-| Observations | 4,752 |
-| Variables | 7 |
+| Alternative-level observations | 4,752 |
+| Variables in the cleaned dataset | 7 |
 | Participants | 198 |
 | Choice sets | 1,584 |
 | Alternatives per choice set | 3 |
-| Selected alternatives per choice set | 1 |
+| Recorded selections per choice set | 1 |
+| Main modelling approach | Conditional logistic regression |
 
-The dataset therefore contains 4,752 alternative-level observations across 1,584 choice sets. Each choice set contains three alternatives, with one recorded selection.
+The dataset is organized at the alternative level. Each participant evaluates multiple choice sets, and each choice set contains three alternatives.
 
-These counts describe the dataset used in the earlier analysis and should be rechecked when the notebook is rerun.
+One alternative is recorded as selected within each choice set.
+
+Consequently, the observations are grouped rather than fully independent: alternatives belong to choice sets, and multiple choice sets may belong to the same participant.
+
+This structure is central to the selection of an appropriate statistical model and the interpretation of uncertainty.
 
 ### Variables
 
 | Variable | Description | Analytical role |
 |---|---|---|
-| `ID` | Participant identifier | Identifies participants and supports participant-level grouping |
+| `ID` | Participant identifier | Identifies participants |
 | `cset` | Choice-set identifier | Identifies alternatives presented within a choice set |
-| `Alternative` | Alternative identifier | Distinguishes the alternatives within a choice set |
-| `Choice` | Selection indicator | Identifies the alternative selected by the participant |
-| `Hydro` | Hydroponic attribute indicator | Represents the hydroponic production attribute |
-| `Organic` | Organic attribute indicator | Represents the organic attribute |
-| `Price` | Alternative price | Represents the stated price associated with an alternative |
+| `Alternative` | Alternative identifier | Distinguishes alternatives |
+| `Choice` | Selection indicator | Identifies the selected alternative |
+| `Hydro` | Hydroponic attribute indicator | Represents hydroponic production status |
+| `Organic` | Organic attribute indicator | Represents organic status |
+| `Price` | Alternative price | Represents the stated price |
 
-The precise coding and units of each variable should be verified against the original questionnaire, codebook, or source dataset before substantive interpretation.
+The exact coding of the attributes and the units of price should be confirmed against the original dataset documentation or questionnaire before interpreting the model estimates substantively.
 
-### No-purchase alternative
+### The no-purchase alternative
 
-The analysis treats Alternative 3 as the no-purchase option. In the cleaned dataset, its attribute values were recorded as `Price = 0`, `Hydro = 0`, and `Organic = 0`.
+The prepared dataset identifies Alternative 3 as the no-purchase option. Its recorded attribute values are:
 
-This coding is important for model specification and interpretation. A zero price for the no-purchase alternative represents the absence of a purchase rather than necessarily representing a market-priced lettuce product.
+- `Price = 0`
+- `Hydro = 0`
+- `Organic = 0`
 
-The reference category and interpretation of coefficients must be consistent with the actual model formula used in the notebook.
+This coding requires careful interpretation. The zero price represents the absence of a purchase, not necessarily a lettuce product offered at no cost.
+
+The model's reference categories and alternative-specific terms must therefore be understood from the actual fitted model specification.
 
 ## 6. Data Preparation and Quality Assurance
 
-The project includes a dedicated data-preparation and exploratory-analysis notebook.
+The analytical workflow begins with data inspection and preparation.
 
-The intended preparation workflow includes:
+The principal preparation tasks include:
 
-1. Loading the source data and recording the original data dimensions.
-2. Inspecting column names, variable types, and the structure of the observations.
-3. Selecting and documenting the variables required for the choice analysis.
-4. Checking missing values, duplicated records, and identifier consistency.
-5. Verifying the number of participants, choice sets, and alternatives.
-6. Checking that each choice set has the expected number of alternatives.
+1. Loading the original dataset and examining its dimensions.
+2. Reviewing column names and data types.
+3. Selecting the variables required for the consumer-choice analysis.
+4. Checking missing values and duplicate records.
+5. Verifying participant and choice-set identifiers.
+6. Confirming the number of alternatives within each choice set.
 7. Checking that each choice set contains exactly one selected alternative.
-8. Reviewing the coding of product attributes and the no-purchase option.
-9. Saving the cleaned analytical dataset and relevant validation outputs.
+8. Inspecting the coding of hydroponic status, organic status, price, and the no-purchase alternative.
+9. Saving the cleaned dataset for subsequent analysis.
 
-These checks should be implemented and confirmed through the notebook. Their inclusion in this README describes the intended quality-assurance process; it does not imply that every check has already been independently passed.
+These are the intended quality-assurance checks; their successful completion should be confirmed by executing the data-preparation notebook.
 
-### Data provenance
-
-The original dataset was identified as `AE_hydro_org.csv`. The cleaned dataset was saved as `lettuce_consumer_choice_clean.csv`.
-
-The raw-to-clean transformation should be documented with the source location, variable mapping, exclusion rules, recoding decisions, and any other processing steps. The original source data and the cleaned analytical file should not be treated as interchangeable.
-
-Where redistribution of the original dataset is restricted or its licence is unclear, the repository should provide appropriate source attribution and access instructions rather than publish data without permission.
+The raw and cleaned datasets should remain distinguishable. Any exclusions, recoding, or other transformations should be documented so that the analytical dataset can be traced to its source.
 
 ## 7. Exploratory Data Analysis
 
-Exploratory analysis is used to establish the structure of the data before interpreting the regression estimates.
+Exploratory data analysis provides an initial understanding of the dataset before model estimation.
 
-The planned analysis includes:
+The workflow examines:
 
-- Participant and choice-set counts.
-- Distribution of alternatives across choice sets.
-- Frequency of selected and unselected alternatives.
-- Distribution of the hydroponic and organic indicators.
-- Summary statistics for price.
-- Inspection of the no-purchase option.
-- Visualisations of choice outcomes and attribute distributions.
+- The number of participants and choice sets.
+- The number of alternatives per choice set.
+- The distribution of selected and unselected alternatives.
+- The frequency of hydroponic and organic attributes.
+- The distribution of alternative prices.
+- The coding and frequency of the no-purchase option.
+- Data completeness and identifier consistency.
 
-Exploratory results should be interpreted in the context of the choice-set design. Alternative-level observations are not necessarily independent because alternatives are grouped within choice sets and multiple choice sets may come from the same participant.
+These checks help establish whether the dataset is suitable for the intended modelling framework.
 
-Descriptive patterns are useful for understanding the dataset, but they do not replace the conditional choice model.
+Descriptive statistics provide useful context, but they do not independently identify consumer preferences. The conditional choice model is used to examine the relationships between product attributes and observed selections.
 
 ## 8. Statistical Methodology
 
-### Conditional logistic regression
+### 8.1 Conditional logistic regression
 
-The primary reported model is a conditional logistic regression designed for grouped choice data. The model evaluates the relative selection of alternatives within choice sets using their observed attributes.
+The primary reported model is a conditional logistic regression designed for grouped choice data.
+
+The model evaluates the relative selection of alternatives within a choice set according to their observed attributes.
 
 A general representation of the conditional choice probability is:
 
@@ -168,8 +189,8 @@ P_{ij} =
 where:
 
 - \(P_{ij}\) is the probability that alternative \(i\) is selected in choice set \(j\).
-- \(C_j\) is the set of available alternatives in choice set \(j\).
-- \(V_{ij}\) is the systematic utility component for alternative \(i\).
+- \(C_j\) represents the available alternatives in choice set \(j\).
+- \(V_{ij}\) represents the systematic utility associated with alternative \(i\).
 
 A representative linear utility specification is:
 
@@ -180,218 +201,298 @@ V_{ij} =
 +\beta_P Price_{ij}
 \]
 
-The exact specification must be confirmed from the executable notebook. If the model includes additional terms, alternative-specific indicators, interactions, or a different reference structure, the equation and its interpretation should be updated accordingly.
+where:
 
-### Interpretation of coefficients
+- \(\beta_H\) is the coefficient associated with hydroponic production.
+- \(\beta_O\) is the coefficient associated with organic status.
+- \(\beta_P\) is the coefficient associated with price.
 
-- A positive coefficient indicates higher relative utility, and hence higher relative selection odds, for a one-unit increase in that attribute, holding the other included terms constant.
-- A negative coefficient indicates lower relative selection odds for a one-unit increase in the attribute.
-- The magnitude depends on how the variable is coded and measured.
-- Statistical uncertainty should be considered alongside coefficient direction and magnitude.
+This equation describes the intended attribute-based framework. The precise interpretation of the reported results depends on the executable model formula, including any additional alternative-specific terms or contrasts.
 
-For binary attributes, the odds ratio is commonly calculated as:
+### 8.2 Coefficients and odds ratios
+
+Conditional logistic regression coefficients are expressed on a log-odds scale. Exponentiating a coefficient gives its odds ratio:
 
 \[
 OR = \exp(\beta)
 \]
 
-An odds ratio above 1 indicates higher relative odds of selection for the coded attribute, while an odds ratio below 1 indicates lower relative odds. An odds ratio should not be described directly as a percentage-point change in choice probability.
+An odds ratio can be interpreted as follows:
 
-### Price interpretation
+- **OR greater than 1:** Higher relative odds of selection for the coded attribute or increase in the explanatory variable.
+- **OR less than 1:** Lower relative odds of selection.
+- **OR equal to 1:** No change in relative odds for the specified contrast.
 
-The price coefficient depends on the price unit and coding used in the dataset. Its interpretation should therefore specify the actual price unit and the size of the change being evaluated.
+These interpretations hold conditional on the other included variables and the model specification.
 
-The no-purchase alternative requires particular care because its price is coded as zero. This is not necessarily equivalent to observing a market-priced product at zero cost.
+Odds ratios are not equivalent to percentage-point changes in choice probability. A change in the probability of selection depends on the characteristics of the alternatives available in the choice set.
 
-### Uncertainty and statistical inference
+### 8.3 Price interpretation
 
-Model interpretation should consider confidence intervals, standard errors, and the assumptions underlying the estimator.
+The price coefficient represents the estimated association between price and relative selection odds.
 
-A confidence interval for an odds ratio that includes 1 does not establish a clear directional association at the corresponding confidence level. Conversely, an interval that excludes 1 provides evidence of an association under the fitted model and its inferential assumptions; it does not prove causality.
+Its substantive interpretation depends on the price unit and coding in the original dataset.
 
-The statistical significance threshold and confidence level should be explicitly reported in the final results.
+An odds ratio below 1 indicates lower relative selection odds as price increases by one coded unit, assuming the variable is specified as intended. The practical magnitude of this relationship cannot be fully assessed without confirming the price scale.
 
-## 9. Participant-Level Bootstrap Analysis
+### 8.4 Statistical uncertainty
 
-Earlier project outputs reported a participant-level bootstrap with 200 replications for uncertainty estimation.
+The analysis uses reported confidence intervals to assess the precision of the estimated odds ratios.
 
-A participant-level bootstrap is intended to account for the fact that one participant may contribute multiple choice sets. In each replication, participants should be resampled as clusters, with all relevant choice-set observations for each sampled participant retained.
+For an odds ratio, a confidence interval that includes 1 does not provide clear evidence of a directional association at the corresponding confidence level.
 
-The implementation should ensure that duplicated participant draws receive unique bootstrap identifiers and that choice-set identifiers do not accidentally merge observations from different sampled copies.
+A confidence interval that excludes 1 indicates evidence of an association under the fitted model and its inferential assumptions. It does not, by itself, establish causality.
 
-The following details should be reported in the final analysis:
+## 9. Results and Interpretation
 
-- Number of bootstrap replications.
-- Unit of resampling.
-- Treatment of repeated participant draws.
-- Handling of failed or non-convergent model fits.
-- Method used to calculate confidence intervals.
-- Number of successful replications.
+The following estimates were reported in an earlier analysis. They should be regenerated from the committed notebook and checked against the final model output before being presented as independently verified results.
 
-The previously reported 200-replication procedure should be treated as provisional until its code and outputs are reviewed. The stability of percentile-based confidence intervals should also be assessed before the bootstrap results are presented as final.
-
-## 10. Previously Reported Model Estimates
-
-The following odds ratios and confidence intervals were reported in an earlier analysis. They are included as preliminary results for transparency and should be regenerated from the committed notebooks before being treated as final.
+### 9.1 Reported model estimates
 
 | Model term | Reported odds ratio | Reported 95% confidence interval | Preliminary interpretation |
 |---|---:|---:|---|
-| Product versus no purchase | 3.405 | 2.458–4.961 | Higher reported relative selection odds for the product alternative under the earlier model |
-| Hydroponic attribute | 0.852 | 0.720–1.047 | Direction is uncertain because the interval includes 1 |
-| Organic attribute | 2.373 | 1.974–2.780 | Higher reported relative selection odds associated with the organic attribute |
-| Price | 0.546 | 0.494–0.590 | Lower reported relative selection odds as price increases, subject to the price coding and unit |
+| Product versus no purchase | 3.405 | 2.458–4.961 | Higher reported relative selection odds for the product alternative |
+| Organic | 2.373 | 1.974–2.780 | Positive association with relative selection odds |
+| Hydro | 0.852 | 0.720–1.047 | Directional association remains uncertain |
+| Price | 0.546 | 0.494–0.590 | Negative association with relative selection odds |
 
-**Important:** These estimates are carried forward from earlier project notes. They have not been independently reproduced in this README. Their exact interpretation depends on the fitted model formula, reference categories, price unit, and confidence-interval procedure.
+**Important:** These estimates are preliminary historical outputs from the project notes, not independently reproduced results in this README. Their interpretation depends on the exact model specification, reference categories, price units, and confidence-interval procedure.
 
-The term “Product versus no purchase” requires particular scrutiny: it should be included in the final model-results table only if the fitted model explicitly estimates and identifies that contrast.
+The product-versus-no-purchase contrast should be reported separately only if it is explicitly estimated and correctly identified in the fitted model.
 
-## 11. Preliminary Interpretation
+### 9.2 Organic status
 
-Subject to verification of the model specification and uncertainty estimates, the earlier results suggest three patterns worth investigating further.
+The previously reported odds ratio for organic status was 2.373, with a confidence interval of 1.974–2.780.
 
-### Organic status
+This estimate is consistent with higher relative selection odds associated with the organic attribute, conditional on the other included model terms.
 
-The previously reported odds ratio for organic status was above 1, with a confidence interval excluding 1. This is consistent with a positive association between the organic attribute and relative selection odds in the earlier fitted model.
+The reported confidence interval excludes 1, indicating a statistically distinguishable positive association under the earlier model's inferential procedure.
 
-This result should not be generalised to all consumers or actual retail purchases without further evidence.
+This result does not establish that all consumers prefer organic lettuce or that the same preference would necessarily appear in actual retail purchases.
 
-### Hydroponic production
+### 9.3 Hydroponic production
 
-The previously reported confidence interval for the hydroponic attribute included 1. The estimate therefore does not provide sufficiently clear evidence of a directional association at the corresponding confidence level.
+The previously reported odds ratio for hydroponic production was 0.852, with a confidence interval of 0.720–1.047.
 
-The appropriate conclusion is that the association remains uncertain, rather than that consumers necessarily prefer or reject hydroponic lettuce.
+Because the interval includes 1, the estimate does not provide clear evidence of a directional association at the corresponding confidence level.
 
-### Price
+The appropriate interpretation is that the association remains uncertain under the earlier model. It would be incorrect to conclude from this result alone that consumers reject hydroponic lettuce.
 
-The earlier model reported an odds ratio below 1 for price. If the price variable is coded as expected and its units are confirmed, this would be consistent with lower relative selection odds at higher prices.
+### 9.4 Price
 
-The size of the price association should be interpreted using the actual price scale and the final model specification.
+The previously reported odds ratio for price was 0.546, with a confidence interval of 0.494–0.590.
 
-### Product selection versus no purchase
+This estimate is consistent with lower relative selection odds as price increases, subject to confirmation of the price coding and units.
 
-The earlier output reported higher selection odds for a product alternative relative to no purchase. This contrast should only be discussed as a separate model estimate after the underlying parameterisation and reference category have been verified.
+The reported confidence interval excludes 1, suggesting a negative association under the earlier model's inferential procedure.
 
-## 12. Figures and Research Outputs
+The size of the price relationship should be interpreted in relation to the actual price unit and the range of prices presented to participants.
 
-The repository is organised to separate source data, analytical outputs, findings, and visualisations.
+### 9.5 Product selection and the no-purchase alternative
 
-### `datasets/`
+The earlier analysis reported an odds ratio of 3.405 for a product-versus-no-purchase contrast.
 
-Contains the cleaned analytical dataset and dataset documentation.
+Before interpreting this estimate, the underlying model must be checked to establish exactly how the contrast was defined and whether the reported parameter corresponds to an explicitly estimated model term.
 
-### `results/`
+This is especially important because the no-purchase option is coded differently from purchased lettuce alternatives.
 
-Contains model results, summary tables, and documented analytical outputs, including:
+## 10. Odds-Ratio Visualization
 
-- `lettuce_choice_model_results.csv`
-- `lettuce_choice_findings_summary.csv`
-- `lettuce_choice_research_limitations.csv`
+The following figure summarizes the reported odds ratios and their confidence intervals on a logarithmic horizontal axis.
 
-The file contents and column definitions should be checked to ensure that each output accurately reflects the final model run.
+![Odds ratios for consumer choices of hydroponic and organic lettuce](figures/lettuce_choice_odds_ratios.png)
 
-### `findings/`
+*Figure 1. Reported odds ratios for product selection, organic status, hydroponic production, and price. The vertical dashed line at OR = 1 represents the reference for no change in relative odds. Confidence intervals crossing this line indicate that the corresponding estimate does not clearly differ from 1 at the associated confidence level.*
 
-Contains the written interpretation and conclusions, including:
+### How to interpret the figure
 
-- `lettuce_choice_research_conclusion.md`
+**Organic:** The reported estimate lies above 1, and its confidence interval remains above 1. This is consistent with a positive association between organic status and relative selection odds.
 
-Written findings should agree with the model estimates and their uncertainty intervals.
+**Hydro:** The reported confidence interval crosses 1. The estimated direction is therefore uncertain at the corresponding confidence level.
 
-### `figures/`
+**Price:** The estimate and its confidence interval lie below 1, consistent with lower relative selection odds as price increases.
 
-Contains plots generated from the analysis, including:
+**Product versus no purchase:** The reported estimate lies above 1. Its interpretation depends on verification of the specific contrast represented by the model term.
 
-- `lettuce_choice_odds_ratios.png`
+The logarithmic axis makes odds ratios above and below 1 easier to compare on a multiplicative scale. It does not change the underlying estimates.
 
-Figures should have informative titles, labelled axes, clear confidence intervals where applicable, and notes identifying the model and reference categories.
+The figure should be regenerated from the final verified model results so that the plotted estimates and confidence intervals remain consistent with the statistical tables.
 
-### Jupyter notebooks
+## 11. Participant-Level Bootstrap and Uncertainty Estimation
 
-The repository contains three intended analytical notebooks:
+Earlier project notes describe a participant-level bootstrap procedure with 200 replications.
 
-1. **Data Preparation and Exploration** — documents the cleaned data, quality checks, and descriptive analysis.
-2. **Consumer Choice Modelling** — fits the conditional logistic regression and estimates uncertainty.
-3. **Results Visualization and Research Conclusions** — communicates the model estimates, figures, and evidence-based interpretation.
+The purpose of participant-level resampling is to account for the fact that a participant may contribute multiple choice sets. Participants should be sampled as clusters, with their associated choice-set observations retained together.
 
-Notebook filenames and locations should be verified against the actual repository. Each notebook should clearly identify its inputs, outputs, dependencies, and execution order.
+A correct implementation also needs to ensure that repeated draws of the same participant receive unique bootstrap identifiers and that choice sets from different sampled copies are not inadvertently combined.
 
-## 13. Reproducibility and Research Transparency
+Before reporting bootstrap confidence intervals as final, the analysis should document:
 
-The project is intended to support independent review and reproducible analysis.
+- The number of attempted and successful replications.
+- The unit of resampling.
+- The treatment of repeated participant draws.
+- The handling of failed or non-convergent model fits.
+- The method used to calculate confidence intervals.
+- The stability of the resulting intervals.
 
-The following standards should be followed:
+The earlier figure and reported estimates should not be assumed to represent bootstrap-derived intervals unless the notebook explicitly confirms this.
 
-- Use descriptive, consistent filenames.
-- Keep data preparation and modelling steps documented.
-- Identify the source and licence of each dataset.
-- State variable definitions, coding decisions, and units.
-- Record software dependencies and relevant package versions.
-- Use a documented random seed for bootstrap or other randomised procedures.
-- Report failed model fits and material changes to the analytical procedure.
-- Generate tables and figures from the analysis code rather than manually altering reported values.
-- Keep the written conclusions consistent with the final verified model outputs.
-- Avoid committing private, restricted, or personally identifiable information.
-- Document any changes to the dataset or model specification.
+With only 200 replications, bootstrap interval estimates may also be sensitive to the resampling procedure. The uncertainty calculation should be verified before it is used to support substantive conclusions.
 
-A fresh execution of the notebooks should reproduce the main tables and figures, subject to documented software and numerical differences.
+## 12. Repository Structure
 
-## 14. Limitations
+The project separates the analytical dataset, notebooks, results, findings, and figures.
 
-The following limitations are relevant to the interpretation of the project.
+```text
+lettuce-consumer-choice-analysis/
+├── datasets/
+│   └── lettuce_consumer_choice_clean.csv
+├── notebooks/
+│   ├── 01_Lettuce_Data_Preparation_and_EDA.ipynb
+│   ├── 02_Lettuce_Consumer_Choice_Model.ipynb
+│   └── 03_Lettuce_Results_and_Visualization.ipynb
+├── results/
+│   ├── lettuce_choice_model_results.csv
+│   ├── lettuce_choice_findings_summary.csv
+│   └── lettuce_choice_research_limitations.csv
+├── findings/
+│   └── lettuce_choice_research_conclusion.md
+├── figures/
+│   └── lettuce_choice_odds_ratios.png
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
 
-**Stated versus actual behaviour.** The dataset records stated choices. Such choices may not correspond exactly to real purchasing behaviour under real-world budget constraints and market conditions.
+This is a proposed repository layout based on the project documentation. Confirm that each file and directory exists and that the notebook filenames match the actual GitHub repository before publishing.
 
-**Sampling and representativeness.** The available information does not, by itself, establish that the 198 participants represent a broader consumer population. External generalisation should therefore be cautious.
+## 13. Reproducibility
 
-**Model specification.** Estimates depend on the selected variables, coding, reference categories, and functional form. Alternative specifications may yield different estimates.
+The project is designed to support transparent analysis and reproducible research.
 
-**Dependence within participants.** Multiple choice sets from the same participant create dependence that should be addressed appropriately in uncertainty estimation.
+### Reproduction workflow
 
-**Price coding.** The units, range, and interpretation of price must be documented. The zero-coded no-purchase option requires special consideration.
+1. Clone or download the repository.
+2. Review the dataset source and access conditions.
+3. Install the dependencies listed in `requirements.txt`.
+4. Open the notebooks in Google Colab or Jupyter Notebook.
+5. Run the notebooks in their documented order.
+6. Inspect the data-validation outputs and descriptive statistics.
+7. Fit the conditional logistic regression model.
+8. Regenerate the odds-ratio table and figure.
+9. Compare the regenerated outputs with the reported results.
 
-**Uncertainty in the hydroponic estimate.** The earlier reported confidence interval included an odds ratio of 1, so a clear directional conclusion is not warranted from that estimate alone.
+The exact reproduction procedure depends on the available source data, file paths, model code, and package versions.
 
-**Unverified reproducibility.** The previously reported estimates and bootstrap intervals require validation against the final notebook code and outputs.
+### Research transparency
 
-**Causal interpretation.** The analysis is observational with respect to the recorded choice attributes as analysed here. Unless the study design and identification assumptions justify causal inference, findings should be described as associations.
+To support reproducibility, the repository should:
 
-These limitations are part of responsible interpretation and provide a basis for improving the analysis.
+- Document the original data source and licence.
+- Explain all variable definitions and coding decisions.
+- Keep data cleaning separate from statistical modelling.
+- Document model formulas and reference categories.
+- Record software dependencies and package versions.
+- Set and document random seeds for resampling procedures.
+- Report failed model fits and relevant analytical changes.
+- Generate tables and figures directly from the analysis code.
+- Ensure the README conclusions agree with the final model outputs.
 
-## 15. Potential Extensions
+The original dataset and cleaned analytical file should be distinguishable, and any transformations should be documented.
 
-Future work may consider the following extensions where the dataset and study design support them:
+## 14. Tools and Technologies
 
-1. Compare alternative model specifications and assess sensitivity to coding decisions.
-2. Investigate participant heterogeneity if relevant demographic or preference variables are available and appropriately documented.
-3. Estimate and communicate predicted choice probabilities for clearly defined scenarios.
-4. Evaluate willingness-to-pay measures only if the model specification, price scale, and assumptions support them.
-5. Compare conditional logit with alternative discrete-choice models where justified.
-6. Improve uncertainty estimation and report bootstrap convergence and sensitivity.
-7. Link stated preferences to observed purchasing behaviour if suitable data become available.
-8. Examine whether findings differ across relevant consumer groups, provided the sample size and data support such analysis.
+| Tool | Application |
+|---|---|
+| Python | Statistical programming and data analysis |
+| pandas | Data preparation and tabular operations |
+| NumPy | Numerical computation |
+| SciPy | Statistical analysis |
+| statsmodels | Statistical modelling and related analytical tools |
+| Matplotlib | Research visualization |
+| Jupyter Notebook | Documented analytical workflow |
+| Google Colab | Cloud-based notebook execution |
+| GitHub | Version control and research portfolio presentation |
 
-These are possible extensions, not completed analyses.
+## 15. Limitations
 
-## 16. Conclusion
+### Stated versus actual purchasing behaviour
 
-This project develops a quantitative framework for examining how hydroponic production, organic status, and price are associated with stated consumer choices for lettuce.
+The dataset records stated choices. Responses in a research setting may differ from decisions made under real-world budget constraints, product availability, and shopping conditions.
 
-The earlier reported estimates suggest a positive association for organic status, a negative association for price, and uncertainty surrounding the hydroponic attribute. These patterns are preliminary and require verification through execution of the committed analysis notebooks.
+### Sample representativeness
 
-The principal contribution of the project is its structured approach to agricultural consumer-choice research: a documented dataset, a discrete-choice modelling framework, interpretable statistical outputs, visual communication, and explicit attention to uncertainty and research limitations.
+The dataset contains 198 participants, but the available project information does not establish that they represent a broader consumer population. Generalization beyond the study sample should be cautious.
 
-The project will be considered reproducible when the source data and transformations are documented, the notebooks run successfully in sequence, the model outputs can be regenerated, and the final conclusions agree with the verified estimates.
+### Dependence among observations
 
-## 17. Repository Navigation
+Multiple choice sets may originate from the same participant. Statistical inference should account for this structure where required by the model and sampling design.
 
-- **`datasets/`** — cleaned data and dataset documentation.
-- **`results/`** — model estimates, summary tables, and analytical outputs.
-- **`findings/`** — written findings, conclusions, and research limitations.
-- **`figures/`** — visualisations generated by the analysis.
-- **Jupyter notebooks** — data preparation, model estimation, and reporting workflow.
+### Model specification
 
-For questions about data provenance, variable coding, model assumptions, or reproducibility, consult the corresponding documentation and notebooks in this repository.
+Estimated relationships depend on the included attributes, variable coding, reference categories, and model assumptions. Alternative specifications may produce different results.
 
----
+### Price measurement
 
-*Research transparency note: All numerical results described as preliminary must be re-generated and verified against the committed code before being presented as final findings.*
+The practical interpretation of the price coefficient depends on the price units and coding. The no-purchase alternative's zero price requires particular care.
+
+### Statistical uncertainty
+
+The hydroponic estimate's previously reported confidence interval includes 1, so a clear directional conclusion is not justified by that estimate alone.
+
+### Verification of preliminary results
+
+The reported estimates and bootstrap procedure need to be checked against the executable notebooks before being treated as final, independently reproduced findings.
+
+### Causal interpretation
+
+The reported associations do not automatically establish causal effects. Any causal interpretation would require additional justification from the study design and the assumptions of the analytical framework.
+
+## 16. Future Research Directions
+
+Potential extensions include:
+
+1. **Model sensitivity:** Compare alternative specifications and investigate the sensitivity of estimates to coding decisions.
+2. **Consumer heterogeneity:** Examine differences across consumer groups if suitable participant-level variables are available.
+3. **Predicted choice probabilities:** Estimate choice probabilities for clearly defined alternative configurations.
+4. **Willingness to pay:** Consider willingness-to-pay estimates if the price scale, model specification, and underlying assumptions support them.
+5. **Alternative discrete-choice models:** Compare conditional logit with other models where justified by the research design and data.
+6. **Improved uncertainty estimation:** Validate participant-level bootstrap procedures and report convergence and sensitivity.
+7. **External validation:** Compare stated preferences with observed purchasing behaviour if suitable market data become available.
+8. **Sustainability-related attributes:** Investigate additional attributes where the dataset contains appropriate measurements and sufficient observations.
+
+These are proposed extensions, not completed analyses.
+
+## 17. Relevance to Agricultural Economics and Data Science
+
+This project demonstrates the application of quantitative methods to agricultural consumer research.
+
+It illustrates the ability to:
+
+- Prepare and validate structured consumer-choice data.
+- Conduct exploratory data analysis.
+- Apply conditional logistic regression.
+- Interpret log-odds coefficients and odds ratios.
+- Evaluate confidence intervals and statistical uncertainty.
+- Visualize model estimates and their uncertainty.
+- Recognize grouped observations and participant-level dependence.
+- Communicate findings without overstating causal conclusions.
+- Develop reproducible notebooks and research documentation.
+
+These skills are relevant to agricultural economics, food marketing, consumer behaviour, sustainable food systems, applied econometrics, and agricultural data science.
+
+## 18. Conclusion
+
+This project investigates how hydroponic production, organic status, and price are associated with stated consumer choices for lettuce using a discrete-choice analytical framework.
+
+The earlier reported estimates suggest a positive association between organic status and relative selection odds, a negative association for price, and uncertainty regarding the hydroponic attribute. The product-versus-no-purchase contrast also requires confirmation of its model specification.
+
+These findings remain preliminary until the statistical outputs, confidence intervals, and executable notebook code have been verified.
+
+The project's main contribution is its structured approach to agricultural consumer-choice analysis: preparing a documented dataset, applying conditional logistic regression, interpreting odds ratios, communicating uncertainty visually, and identifying the limitations that govern scientific interpretation.
+
+**Author:** Richard Antwi
+
+**Research interests:** Agricultural Economics · Animal Science · Agricultural Data Analysis · Sustainable Agriculture · Applied Statistics
+
+*This project forms part of an agricultural research portfolio demonstrating quantitative reasoning, reproducible research, and the application of statistical methods to agricultural questions.*
